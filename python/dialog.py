@@ -13,10 +13,29 @@ if len(sys.argv)==1:
     parser.print_help(sys.stderr)
     sys.exit(1)
 if args.s:
-    print(tkinter.filedialog.asksaveasfilename())
+    temp=tkinter.filedialog.asksaveasfilename()
+    if(len(temp)==0):
+        print("None")
+    else:
+        print(temp)
 if args.o:
-    print(tkinter.filedialog.askopenfilename())
+    temp=(tkinter.filedialog.askopenfilename())
+    if(len(temp)==0):
+        print("None")
+    else:
+        print(temp)
+
 if args.d:
-    print(tkinter.filedialog.askdirectory())
+    temp=(tkinter.filedialog.askdirectory())
+    if(len(temp)==0):
+        print("None")
+    else:
+        print(temp)
+
 if args.f:
-    print('\n'.join(tkinter.filedialog.askopenfilenames()))
+    temp=(tkinter.filedialog.askopenfilenames())
+    if(len(temp)==0):
+        print("None")
+    else:
+        print('\n'.join(temp))
+
