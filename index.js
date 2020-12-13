@@ -19,22 +19,15 @@ function askdialog(config) {
   cmd += ' -f';
   var promise = new Promise((resolve, reject) => {
     exec(path.join(root, cmd), (error, stdout, stderr) => {
-      var ignorableError = false;
-      if (error) {
-        reject(new Error(error));
-      } else if (stderr) {
-        if (stderr.search('Fontconfig warning:') != -1) {
-          ignorableError = false;
-        } else {
-          ignorableError = true;
-          reject(new Error(stderr));
-        }
-      }
-      if (ignorableError == false) {
+      if (stdout) {
         if (stdout.trim() === 'None')
           reject(new Error('No directory selected'));
         else
           resolve(stdout.trim().split('\n'))
+      } else if (error) {
+        reject(new Error(error));
+      } else if (stderr) {
+        reject(new Error(stderr));
       }
     });
   })
