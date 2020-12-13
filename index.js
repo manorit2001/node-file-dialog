@@ -11,11 +11,11 @@ function askdialog(config) {
       path.join(cmd, 'windows', filename + '.exe')
   if (config.type === 'directory')
   cmd += ' -d';
-  else if (config.type === 'saveFile')
+  else if (config.type === 'save-file')
   cmd += ' -s';
-  else if (config.type === 'openFile')
+  else if (config.type === 'open-file')
   cmd += ' -o';
-  else if (config.type === 'openMultipleFiles')
+  else if (config.type === 'open-files')
   cmd += ' -f';
   var promise = new Promise((resolve, reject) => {
     exec(path.join(root, cmd), (error, stdout, stderr) => {
