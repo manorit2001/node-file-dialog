@@ -12,14 +12,14 @@
   },
   "files": [
     "index.js",
-    "python/dist/*"
+    "python/dist/**/*"
   ],
   "keywords": [
     "file",
     "dialog",
     "gui"
   ],
-  "author": "XploreX",
+  "author": "Manorit Chawdhry",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/XploreX/node-file-dialog/issues"
