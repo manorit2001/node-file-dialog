@@ -30,3 +30,8 @@ It returns a promise with the list of selected files
 [ '/path/to/selected/folder/or/files', ... ]
 ```
 
+If nothing is selected, It throws an error
+```
+Error: Nothing selected
+```
+

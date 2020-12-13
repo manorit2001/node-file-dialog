@@ -21,7 +21,7 @@ function askdialog(config) {
     exec(path.join(root, cmd), (error, stdout, stderr) => {
       if (stdout) {
         if (stdout.trim() === 'None')
-          reject(new Error('No directory selected'));
+          reject(new Error('Nothing selected'));
         else
           resolve(stdout.trim().split('\n'))
       } else if (error) {
