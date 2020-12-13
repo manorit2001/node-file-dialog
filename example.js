@@ -1,4 +1,4 @@
-const dialog = require('file-dialog')
+const dialog = require('node-file-dialog')
 const config = {
   type: 'directory'
 };

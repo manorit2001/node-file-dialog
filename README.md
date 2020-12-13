@@ -7,7 +7,7 @@ Currently supports 64 bit architecture only
 ## Getting Started
 ### Installation
 ```
-npm install file-dialog
+npm install node-file-dialog
 ```
 
 ### Usage
@@ -19,7 +19,7 @@ The configuration supports following dialog types
 
 
 ```
-const dialog = require('file-dialog')
+const dialog = require('node-file-dialog')
 const config={type:'directory'}
 dialog(config)
     .then(dir => console.log(dir))
