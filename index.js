@@ -6,7 +6,7 @@ const root = __dirname;
 function askdialog(config) {
   var cmd = path.join('python', 'dist')
   if (process.platform === 'linux') {
-    var filename = 'node-file-dialog-' + pjson.version
+    var filename = 'node-file-dialog'
     if (process.arch === 'x86') filename += '-xi686.AppImage'
     else filename += '-x86_64.AppImage'
     cmd = path.join(cmd, 'linux', filename)
