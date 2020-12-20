@@ -1,6 +1,6 @@
 {
   "name": "node-file-dialog",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Shows a gui dialog box to choose files/folders on server side",
   "main": "index.js",
   "scripts": {

@@ -1,22 +1,29 @@
 const {exec} = require('child_process');
 const path = require('path');
+const pjson = require('./package.json');
 const root = __dirname;
 
 function askdialog(config) {
   var cmd = path.join('python', 'dist')
-  var filename = 'dialog'
-  if (process.arch === 'x86') filename += '-x86'
-  if (process.platform === 'linux') cmd = path.join(cmd, 'linux', filename)
-  if (process.platform === 'win32') cmd =
-      path.join(cmd, 'windows', filename + '.exe')
+  if (process.platform === 'linux') {
+    var filename = 'node-file-dialog-' + pjson.version
+    if (process.arch === 'x86') filename += '-xi686.AppImage'
+    else filename += '-x86_64.AppImage'
+    cmd = path.join(cmd, 'linux', filename)
+  }
+  if (process.platform === 'win32') {
+    var filename = 'dialog'
+    if (process.arch === 'x86') filename += '-x86'
+    cmd = path.join(cmd, 'windows', filename + '.exe')
+  }
   if (config.type === 'directory')
-  cmd += ' -d';
+    cmd += ' -d';
   else if (config.type === 'save-file')
-  cmd += ' -s';
+    cmd += ' -s';
   else if (config.type === 'open-file')
-  cmd += ' -o';
+    cmd += ' -o';
   else if (config.type === 'open-files')
-  cmd += ' -f';
+    cmd += ' -f';
   var promise = new Promise((resolve, reject) => {
     exec(path.join(root, cmd), (error, stdout, stderr) => {
       if (stdout) {
