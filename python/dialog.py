@@ -1,6 +1,10 @@
+import tkinter as tk
 import tkinter.filedialog
 import argparse
 import sys
+root = tk.Tk()
+# Hide it with .withdraw
+root.withdraw()
      
 parser=argparse.ArgumentParser(
         description="Opens File selection dialog boxes")
