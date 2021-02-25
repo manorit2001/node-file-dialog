@@ -1,4 +1,9 @@
 # node-file-dialog
+[![Issues](https://img.shields.io/github/issues/manorit2001/node-file-dialog)](https://github.com/manorit2001/node-file-dialog/issues)
+[![Version](https://img.shields.io/npm/v/node-file-dialog)](https://www.npmjs.com/package/node-file-dialog)
+[![Downloads](https://img.shields.io/npm/dt/node-file-dialog)](https://www.npmjs.com/package/node-file-dialog)
+[![License](https://img.shields.io/npm/l/node-file-dialog)](https://www.npmjs.com/package/node-file-dialog)
+
 Opens file dialog gui in nodejs server side
 
 ## Compatibilty
