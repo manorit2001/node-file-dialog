@@ -1,5 +1,6 @@
 const {exec} = require('child_process');
 const path = require('path');
+const {EOL} = require('os');
 const pjson = require('./package.json');
 const root = __dirname;
 
@@ -30,7 +31,7 @@ function askdialog(config) {
         if (stdout.trim() === 'None')
           reject(new Error('Nothing selected'));
         else
-          resolve(stdout.trim().split('\n'))
+          resolve(stdout.trim().split(EOL));
       } else if (error) {
         reject(new Error(error));
       } else if (stderr) {
