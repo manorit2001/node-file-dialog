@@ -18,13 +18,13 @@ function askdialog(config) {
     cmd = path.join(cmd, 'windows', filename + '.exe')
   }
   if (config.type === 'directory')
-    cmd += ' -d';
+    cmd += '" -d';
   else if (config.type === 'save-file')
-    cmd += ' -s';
+    cmd += '" -s';
   else if (config.type === 'open-file')
-    cmd += ' -o';
+    cmd += '" -o';
   else if (config.type === 'open-files')
-    cmd += ' -f';
+    cmd += '" -f';
   var promise = new Promise((resolve, reject) => {
     exec(path.join(root, cmd), (error, stdout, stderr) => {
       if (stdout) {
