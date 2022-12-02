@@ -26,7 +26,7 @@ function askdialog(config) {
   else if (config.type === 'open-files')
     cmd += '" -f';
   var promise = new Promise((resolve, reject) => {
-    exec(path.join(root, cmd), (error, stdout, stderr) => {
+    exec('"' + path.join(root, cmd), (error, stdout, stderr) => {
       if (stdout) {
         if (stdout.trim() === 'None')
           reject(new Error('Nothing selected'));
