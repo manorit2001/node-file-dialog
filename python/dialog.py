@@ -16,10 +16,10 @@ windowtitle = None
      
 parser=argparse.ArgumentParser(
         description="Opens File selection dialog boxes")
-parser.add_argument('d',help="directory open prompt",action='store_true')
-parser.add_argument('o',help='file open prompt',action='store_true')
-parser.add_argument('s',help='file save prompt',action='store_true')
-parser.add_argument('f',help='multiple files open prompt',action='store_true')
+parser.add_argument('-d',help="directory open prompt",action='store_true')
+parser.add_argument('-o',help='file open prompt',action='store_true')
+parser.add_argument('-s',help='file save prompt',action='store_true')
+parser.add_argument('-f',help='multiple files open prompt',action='store_true')
 parser.add_argument('-ext',  help='default extension')
 parser.add_argument('-types',  help='file types')
 parser.add_argument('-dir',  help='starting directory')
