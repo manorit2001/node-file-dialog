@@ -39,7 +39,7 @@ function askdialog(config) {
 
 
   var promise = new Promise((resolve, reject) => {
-    exec("python " + __dirname + '/python/dialog.py ' + cmd, (error, stdout, stderr) => {
+    exec("python \"" + __dirname + '/python/dialog.py\" ' + cmd, (error, stdout, stderr) => {
       if (stdout) {
         if (stdout.trim() === 'None')
           reject(new Error('Nothing selected'));
