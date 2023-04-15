@@ -5,18 +5,10 @@ const pjson = require('./package.json');
 const root = __dirname;
 
 function askdialog(config) {
-  var cmd = path.join('python', 'dist')
-  if (process.platform === 'linux') {
-    var filename = 'node-file-dialog'
-    if (process.arch === 'x86') filename += '-xi686.AppImage'
-    else filename += '-x86_64.AppImage'
-    cmd = path.join(cmd, 'linux', filename)
-  }
-  if (process.platform === 'win32') {
-    var filename = 'dialog.py'
-    if (process.arch === 'x86') filename += '-x86'
-    cmd = path.join(cmd, 'windows', filename)
-  }
+  var cmd = ""//path.join('python', 'python-static')
+  //if (process.platform === 'win32') {
+  //  cmd = path.join(cmd, 'win', 'python.exe')
+  //}
   if (config.type === 'directory')
     cmd += ' -d';
   else if (config.type === 'save-file')
@@ -47,7 +39,7 @@ function askdialog(config) {
 
 
   var promise = new Promise((resolve, reject) => {
-    exec("python " + path.join(root, cmd), (error, stdout, stderr) => {
+    exec("python " + __dirname + '/python/dialog.py ' + cmd, (error, stdout, stderr) => {
       if (stdout) {
         if (stdout.trim() === 'None')
           reject(new Error('Nothing selected'));
