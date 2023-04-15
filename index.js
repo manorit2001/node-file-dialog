@@ -13,9 +13,9 @@ function askdialog(config) {
     cmd = path.join(cmd, 'linux', filename)
   }
   if (process.platform === 'win32') {
-    var filename = 'dialog'
+    var filename = 'dialog.py'
     if (process.arch === 'x86') filename += '-x86'
-    cmd = path.join(cmd, 'windows', filename + '.exe')
+    cmd = path.join(cmd, 'windows', filename)
   }
   if (config.type === 'directory')
     cmd += ' -d';
@@ -25,8 +25,29 @@ function askdialog(config) {
     cmd += ' -o';
   else if (config.type === 'open-files')
     cmd += ' -f';
+  
+  if (config.extra) {
+    if (config.extra.ext) cmd += ` -ext="${config.extra.ext}"`;
+    if (config.extra.types) {
+      for (const item in config.extra.types) {
+        const indexes = Object.keys(config.extra.types)
+        if (item == indexes[0]) {
+          cmd += ` -types="[('${item}','${config.extra.types[item]}')`
+        }
+        if (item != indexes[0]) {
+          cmd += `,('${item}', '${config.extra.types[item]}')`
+        }
+      }
+      cmd += ']"'
+    }
+    if (config.extra.startdir) cmd += ` -dir="${config.extra.startdir}"`;
+    if (config.extra.startfile) cmd += ` -file="${config.extra.startfile}"`;
+    if (config.extra.title) cmd += ` -title="${config.extra.title}"`;
+  }
+
+
   var promise = new Promise((resolve, reject) => {
-    exec(path.join(root, cmd), (error, stdout, stderr) => {
+    exec("python " + path.join(root, cmd), (error, stdout, stderr) => {
       if (stdout) {
         if (stdout.trim() === 'None')
           reject(new Error('Nothing selected'));
@@ -42,4 +63,4 @@ function askdialog(config) {
   return promise;
 }
 
-module.exports = askdialog;
+module.exports = {dialog: askdialog};
