@@ -1,6 +1,6 @@
 == todo ==
 
-add static python install
+add static python install or figure out how to bundle current dialog.py into an exe
 
 == in progress ==
 
