@@ -27,7 +27,7 @@ type: type of dialog to open, directory, save-file, open-file or open-files
 Open the dialog with no extra options:
 
 ```
-const dialog = require('node-file-dialog')
+const dialog = require('node-file-dialog').dialog
 const config={type:'directory'}
 dialog(config)
     .then(dir => console.log(dir))
