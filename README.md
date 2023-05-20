@@ -19,6 +19,11 @@ startfile: file selected when file explorer opens
 title: title of explorer window
 ```
 
+Required property is:
+```
+type: type of dialog to open, directory, save-file, open-file or open-files
+```
+
 Open the dialog with no extra options:
 
 ```
