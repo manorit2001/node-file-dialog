@@ -30,7 +30,7 @@ This package exports a function, known internally as dialog.
 To use it, you do
 
 ```js
-const dialog = require('@fheahdythdr/node-file-dialog');
+const { dialog } = require('@fheahdythdr/node-file-dialog');
 const config = {
     dialogtype: 'open-file', // the rest of these are optional, dialog only needs dialogtype.
     ext: "mp4 files", // the default extension, use the name of it and not which extensions it uses
@@ -71,7 +71,7 @@ const result = dialog(config).then((result) => {
 ##### Typescript
 
 ```ts
-import { dialog, Config } from "../dist/index";
+import { dialog, Config } from '@fheahdythdr/node-file-dialog';
 
 const config: Config = {
     dialogtype: 'open-file'
