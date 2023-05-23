@@ -5,7 +5,7 @@ A NodeJS library that lets you open file dialogs
 ## Getting started
 ### Installation
 ```
-npm install node-file-dialog
+npm install @fheahdythdr/node-file-dialog
 ```
 
 ### Usage
@@ -21,14 +21,16 @@ title: title of explorer window
 
 Required property is:
 ```
-type: type of dialog to open, directory, save-file, open-file or open-files
+dialogtype: type of dialog to open, directory, save-file, open-file or open-files
 ```
 
 Open the dialog with no extra options:
 
-```
+```js
 const dialog = require('node-file-dialog').dialog
-const config={type:'directory'}
+const config = {
+    dialogtype: 'directory'
+}
 dialog(config)
     .then(dir => console.log(dir))
     .catch(err => console.log(err))
@@ -36,7 +38,7 @@ dialog(config)
 
 A promise is returned that resolves to an array containing all selected files.
 
-```
+```js
 [ '/path/to/selected/folder/or/files', ... ]
 ```
 
@@ -44,3 +46,7 @@ If the user cancels, it throws an error.
 ```
 Error: Nothing selected
 ```
+
+## Notes
+
+This will eventually have a compiled .exe instead of requiring python, at which point I will likely make a pull request.
