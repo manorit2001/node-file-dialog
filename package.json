@@ -1,29 +1,33 @@
 {
-  "name": "node-file-dialog",
+  "name": "@fheahdythdr/node-file-dialog",
   "version": "1.0.3",
   "description": "Shows a gui dialog box to choose files/folders on server side",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/XploreX/node-file-dialog.git"
+    "url": "git+https://github.com/fheahdythdr/node-file-dialog.git"
   },
+  "types" : "dist/index.d.ts",
   "files": [
-    "index.js",
-    "index.d.ts",
-    "python/dist/**/*"
+    "./python/*",
+    "./dist/*",
+    "./src/*",
+    "./example.js",
+    "./example.ts"
   ],
   "keywords": [
     "file",
     "dialog",
     "gui"
   ],
-  "author": "Manorit Chawdhry",
+  "author": "Manorit Chawdhry (original), this fork: fheahdythdr",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/XploreX/node-file-dialog/issues"
+    "url": "https://github.com/fheahdythdr/node-file-dialog/issues"
   },
-  "homepage": "https://github.com/XploreX/node-file-dialog#readme"
+  "homepage": "https://github.com/fheahdythdr/node-file-dialog#readme"
 }
