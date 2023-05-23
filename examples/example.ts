@@ -1,5 +1,4 @@
-import { dialog } from "../dist/index";
-import { Config } from "../dist/interfaces";
+import { dialog, Config } from "@fheahdythdr/node-file-dialog";
 
 const config: Config = {
     dialogtype: 'open-file'
