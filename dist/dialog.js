@@ -8,10 +8,19 @@ const child_process_1 = require("child_process");
 const path_1 = __importDefault(require("path"));
 const os_1 = require("os");
 function dialog(config) {
-    var cmd = ""; //path.join('python', 'python-static')
-    //if (process.platform === 'win32') {
-    //  cmd = path.join(cmd, 'win', 'python.exe')
-    //}
+    var cmd = path_1.default.join('python', 'dist');
+    if (process.platform === 'linux') {
+        var filename = 'node-file-dialog';
+        if (process.arch === 'ia32')
+            filename += '-xi686.AppImage';
+        else
+            filename += '-x86_64.AppImage';
+        cmd = path_1.default.join(cmd, 'linux', filename);
+    }
+    if (process.platform === 'win32') {
+        var filename = 'dialog';
+        cmd = path_1.default.join(cmd, 'win', filename + '.exe');
+    }
     if (config.dialogtype === 'directory')
         cmd += ' -d';
     else if (config.dialogtype === 'save-file')
@@ -45,7 +54,7 @@ function dialog(config) {
     if (config.title)
         cmd += ` -title="${config.title}"`;
     var promise = new Promise((resolve, reject) => {
-        (0, child_process_1.exec)("python \"" + path_1.default.join(__dirname, "../") + '/python/dialog.py\" ' + cmd, (error, stdout, stderr) => {
+        (0, child_process_1.exec)(path_1.default.join(__dirname, '../', cmd), (error, stdout, stderr) => {
             if (stdout) {
                 if (stdout.trim() === 'None')
                     reject(new Error('Nothing selected'));
