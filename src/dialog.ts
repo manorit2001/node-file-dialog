@@ -4,10 +4,17 @@ import path from 'path';
 import { EOL } from 'os';
 
 export function dialog(config: Config) {
-  var cmd = ""//path.join('python', 'python-static')
-  //if (process.platform === 'win32') {
-  //  cmd = path.join(cmd, 'win', 'python.exe')
-  //}
+  var cmd = path.join('python', 'dist')
+  if (process.platform === 'linux') {
+    var filename = 'node-file-dialog'
+    if (process.arch === 'ia32') filename += '-xi686.AppImage'
+    else filename += '-x86_64.AppImage'
+    cmd = path.join(cmd, 'linux', filename)
+  }
+  if (process.platform === 'win32') {
+    var filename = 'dialog'
+    cmd = path.join(cmd, 'win', filename + '.exe')
+  }
   if (config.dialogtype === 'directory')
     cmd += ' -d';
   else if (config.dialogtype === 'save-file')
@@ -40,7 +47,7 @@ export function dialog(config: Config) {
 
 
   var promise = new Promise((resolve, reject) => {
-    exec("python \"" + path.join(__dirname, "../") + '/python/dialog.py\" ' + cmd, (error, stdout, stderr) => {
+    exec(path.join(__dirname, '../', cmd), (error, stdout, stderr) => {
       if (stdout) {
         if (stdout.trim() === 'None')
           reject(new Error('Nothing selected'));
