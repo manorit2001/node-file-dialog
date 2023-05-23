@@ -16,8 +16,8 @@
     "./python/*",
     "./dist/*",
     "./src/*",
-    "./example.js",
-    "./example.ts"
+    "./examples/*",
+    "./tsconfig.json"
   ],
   "keywords": [
     "file",
