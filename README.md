@@ -24,29 +24,55 @@ Required property is:
 dialogtype: type of dialog to open, directory, save-file, open-file or open-files
 ```
 
-Open the dialog with no extra options:
+### Documentation
+
+This package exports a function, known internally as dialog.
+To use it, you do
 
 ```js
-const dialog = require('node-file-dialog').dialog
+const dialog = require('@fheahdythdr/node-file-dialog');
 const config = {
-    dialogtype: 'directory'
+    dialogtype: 'open-file', // the rest of these are optional, dialog only needs dialogtype.
+    ext: "mp4 files", // the default extension, use the name of it and not which extensions it uses
+    types: [ // the extensions you can pick from
+        {
+            display: "mp4 files", extensions: "*.mp4"   
+        }
+    ],
+    startdir: "C:\\", // starting directory
+    title: "open file" // tkinter window's title
+    // additionally: startfile, the file that is selected by default
 }
-dialog(config)
-    .then(dir => console.log(dir))
-    .catch(err => console.log(err))
+dialog(config).then(res => {
+    // res is an array, loop through it if you need to perform an action on each selected file
+    console.log(res); // logs an array with whatever file(s) the user selected.
+})
 ```
 
-A promise is returned that resolves to an array containing all selected files.
+### Examples
+
+##### NodeJS
 
 ```js
-[ '/path/to/selected/folder/or/files', ... ]
+const { dialog } = require('@fheahdythdr/node-file-dialog')
+const config = {
+    dialogtype: 'open-file'
+};
+const result = dialog(config).then((result) => {
+    console.log(result);
+});
 ```
 
-If the user cancels, it throws an error.
-```
-Error: Nothing selected
-```
+##### Typescript
 
-## Notes
+```ts
+import { dialog, Config } from "../dist/index";
 
-This will eventually have a compiled .exe instead of requiring python, at which point I will likely make a pull request.
+const config: Config = {
+    dialogtype: 'open-file'
+}
+
+dialog(config).then((result) => {
+    console.log(result);
+});
+```
