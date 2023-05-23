@@ -15,6 +15,7 @@ export function dialog(config: Config) {
     var filename = 'dialog'
     cmd = path.join(cmd, 'win', filename + '.exe')
   }
+  cmd += '"';
   if (config.dialogtype === 'directory')
     cmd += ' -d';
   else if (config.dialogtype === 'save-file')
@@ -47,7 +48,7 @@ export function dialog(config: Config) {
 
 
   var promise = new Promise((resolve, reject) => {
-    exec(path.join(__dirname, '../', cmd), (error, stdout, stderr) => {
+    exec('"' + path.join(__dirname, '../', cmd), (error, stdout, stderr) => {
       if (stdout) {
         if (stdout.trim() === 'None')
           reject(new Error('Nothing selected'));
