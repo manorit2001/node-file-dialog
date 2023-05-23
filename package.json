@@ -1,6 +1,6 @@
 {
   "name": "@fheahdythdr/node-file-dialog",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A NodeJS library that lets you open file dialogs to open file(s), directories or save a file.",
   "main": "dist/index.js",
   "scripts": {
