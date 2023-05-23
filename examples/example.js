@@ -1,4 +1,4 @@
-const { dialog } = require('../dist/dialog.js')
+const { dialog } = require('@fheahdythdr/node-file-dialog')
 const config = {
     dialogtype: 'open-file'
 };
