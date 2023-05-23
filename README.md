@@ -46,6 +46,9 @@ const config = {
 dialog(config).then(res => {
     // res is an array, loop through it if you need to perform an action on each selected file
     console.log(res); // logs an array with whatever file(s) the user selected.
+}).catch(err => {
+    // throws an error if the user doesn't pick anything, so let's catch that
+    console.error(err);
 })
 ```
 
@@ -60,6 +63,8 @@ const config = {
 };
 const result = dialog(config).then((result) => {
     console.log(result);
+}).catch(err => {
+    console.error(err);
 });
 ```
 
@@ -74,5 +79,7 @@ const config: Config = {
 
 dialog(config).then((result) => {
     console.log(result);
+}).catch((err: Error) => {
+    console.error(err.message);
 });
 ```
