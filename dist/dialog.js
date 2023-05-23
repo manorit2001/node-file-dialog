@@ -21,6 +21,7 @@ function dialog(config) {
         var filename = 'dialog';
         cmd = path_1.default.join(cmd, 'win', filename + '.exe');
     }
+    cmd += '"';
     if (config.dialogtype === 'directory')
         cmd += ' -d';
     else if (config.dialogtype === 'save-file')
@@ -54,7 +55,7 @@ function dialog(config) {
     if (config.title)
         cmd += ` -title="${config.title}"`;
     var promise = new Promise((resolve, reject) => {
-        (0, child_process_1.exec)(path_1.default.join(__dirname, '../', cmd), (error, stdout, stderr) => {
+        (0, child_process_1.exec)('"' + path_1.default.join(__dirname, '../', cmd), (error, stdout, stderr) => {
             if (stdout) {
                 if (stdout.trim() === 'None')
                     reject(new Error('Nothing selected'));
