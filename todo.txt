@@ -1,6 +1,6 @@
 == todo ==
 
-add static python install or figure out how to bundle current dialog.py into an exe
+build linux version of dialog.exe
 
 == in progress ==
 
@@ -9,3 +9,4 @@ add static python install or figure out how to bundle current dialog.py into an 
 == finished ==
 
 add args to open file, open files, open dir and save as
+add static python install or figure out how to bundle current dialog.py into an exe
