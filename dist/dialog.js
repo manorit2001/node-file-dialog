@@ -18,7 +18,7 @@ function dialog(config) {
         cmd = path_1.default.join(cmd, 'linux', filename);
     }
     if (process.platform === 'win32') {
-        var filename = 'dialog';
+        var filename = 'dialog/dialog';
         cmd = path_1.default.join(cmd, 'win', filename + '.exe');
     }
     cmd += '"';
