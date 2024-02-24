@@ -15,7 +15,7 @@ function askdialog(config) {
   if (process.platform === 'win32') {
     var filename = 'dialog'
     if (process.arch === 'x86') filename += '-x86'
-    cmd = path.join(cmd, 'windows', filename + '.exe')
+    cmd = "\"" +  path.join(cmd, 'windows', filename + '.exe') +  "\"" 
   }
   if (config.type === 'directory')
     cmd += ' -d';
