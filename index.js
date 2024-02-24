@@ -3,9 +3,10 @@ const path = require('path');
 const {EOL} = require('os');
 const pjson = require('./package.json');
 const root = __dirname;
+let prefix = "";
 
 function askdialog(config) {
-  var cmd = "\"" + path.join('python', 'dist')
+  var cmd = path.join('python', 'dist')
   if (process.platform === 'linux') {
     var filename = 'node-file-dialog'
     if (process.arch === 'x86') filename += '-xi686.AppImage'
@@ -16,6 +17,7 @@ function askdialog(config) {
     var filename = 'dialog'
     if (process.arch === 'x86') filename += '-x86'
     cmd = path.join(cmd, 'windows', filename + '.exe') +  "\"" 
+    prefix = "\"" 
   }
   if (config.type === 'directory')
     cmd += ' -d';
@@ -26,7 +28,7 @@ function askdialog(config) {
   else if (config.type === 'open-files')
     cmd += ' -f';
   var promise = new Promise((resolve, reject) => {
-    exec(path.join(root, cmd), (error, stdout, stderr) => {
+    exec(prefix + path.join(root, cmd), (error, stdout, stderr) => {
       if (stdout) {
         if (stdout.trim() === 'None')
           reject(new Error('Nothing selected'));
