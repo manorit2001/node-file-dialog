@@ -39,7 +39,7 @@ function askdialog(config) {
       }
     });
   })
-  return promise;
+  return promise; 
 }
 
 module.exports = askdialog;
