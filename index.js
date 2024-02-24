@@ -5,7 +5,7 @@ const pjson = require('./package.json');
 const root = __dirname;
 
 function askdialog(config) {
-  var cmd = path.join('python', 'dist')
+  var cmd = "\"" + path.join('python', 'dist')
   if (process.platform === 'linux') {
     var filename = 'node-file-dialog'
     if (process.arch === 'x86') filename += '-xi686.AppImage'
@@ -15,7 +15,7 @@ function askdialog(config) {
   if (process.platform === 'win32') {
     var filename = 'dialog'
     if (process.arch === 'x86') filename += '-x86'
-    cmd = "\"" +  path.join(cmd, 'windows', filename + '.exe') +  "\"" 
+    cmd = path.join(cmd, 'windows', filename + '.exe') +  "\"" 
   }
   if (config.type === 'directory')
     cmd += ' -d';
