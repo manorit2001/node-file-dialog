@@ -2,7 +2,7 @@ const {exec} = require('child_process');
 const path = require('path');
 const {EOL} = require('os');
 const pjson = require('./package.json');
-let root = __dirname.left(__dirname.length - 5);
+let root = __dirname.slice(0, __dirname.length - 5);
 let prefix = "";
 
 function askdialog(config) {
