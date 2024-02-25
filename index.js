@@ -2,7 +2,8 @@ const {exec} = require('child_process');
 const path = require('path');
 const {EOL} = require('os');
 const pjson = require('./package.json');
-const root = __dirname;
+let root = __dirname.slice(0, __dirname.length - 5);
+let prefix = "";
 
 function askdialog(config) {
   var cmd = path.join('python', 'dist')
@@ -15,7 +16,8 @@ function askdialog(config) {
   if (process.platform === 'win32') {
     var filename = 'dialog'
     if (process.arch === 'x86') filename += '-x86'
-    cmd = path.join(cmd, 'windows', filename + '.exe')
+    cmd = path.join(cmd, 'windows', filename + '.exe') +  "\"" 
+    prefix = "\"" 
   }
   if (config.type === 'directory')
     cmd += ' -d';
@@ -26,7 +28,7 @@ function askdialog(config) {
   else if (config.type === 'open-files')
     cmd += ' -f';
   var promise = new Promise((resolve, reject) => {
-    exec(path.join(root, cmd), (error, stdout, stderr) => {
+    exec(prefix + path.join(root, "node_modules", "node-file-dialog", cmd), (error, stdout, stderr) => {
       if (stdout) {
         if (stdout.trim() === 'None')
           reject(new Error('Nothing selected'));
@@ -39,7 +41,7 @@ function askdialog(config) {
       }
     });
   })
-  return promise;
+  return promise; 
 }
 
 module.exports = askdialog;
