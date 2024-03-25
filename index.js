@@ -17,16 +17,17 @@ function askdialog(config) {
     if (process.arch === 'x86') filename += '-x86'
     cmd = path.join(cmd, 'windows', filename + '.exe')
   }
+  let args = ""
   if (config.type === 'directory')
-    cmd += ' -d';
+    args += ' -d';
   else if (config.type === 'save-file')
-    cmd += ' -s';
+    args += ' -s';
   else if (config.type === 'open-file')
-    cmd += ' -o';
+    args += ' -o';
   else if (config.type === 'open-files')
-    cmd += ' -f';
+    args += ' -f';
   var promise = new Promise((resolve, reject) => {
-    exec(path.join(root, cmd), (error, stdout, stderr) => {
+    exec(`"${path.join(root, cmd)}" ${args}`, (error, stdout, stderr) => {
       if (stdout) {
         if (stdout.trim() === 'None')
           reject(new Error('Nothing selected'));
